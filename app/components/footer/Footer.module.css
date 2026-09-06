@@ -1,0 +1,249 @@
+.footer {
+  background: #050505;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Top section ── */
+.top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 64px;
+  padding: 80px 6% 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Brand col ── */
+.brandCol {}
+
+.logoLink {
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.logo {
+  width: 130px;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+.brandDesc {
+  font-family: var(--font-manrope, "Manrope", sans-serif);
+  font-size: 13px;
+  color: rgba(240, 244, 248, 0.5);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  max-width: 320px;
+}
+
+.vision {
+  border-left: 2px solid #007FFF;
+  padding-left: 16px;
+}
+
+.visionLabel {
+  display: block;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #007FFF;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.visionText {
+  font-family: var(--font-manrope, "Manrope", sans-serif);
+  font-size: 12.5px;
+  color: rgba(240, 244, 248, 0.45);
+  line-height: 1.75;
+}
+
+/* ── Link cols ── */
+.linksCol,
+.contactCol {
+  padding-top: 4px;
+}
+
+.colTitle {
+  font-family: var(--font-space-grotesk, "Space Grotesk", sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #f0f4f8;
+  margin-bottom: 24px;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linkList li a {
+  font-family: var(--font-manrope, "Manrope", sans-serif);
+  font-size: 13.5px;
+  color: rgba(240, 244, 248, 0.5);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.linkList li a:hover {
+  color: #007FFF;
+  padding-left: 4px;
+}
+
+/* ── Contact col ── */
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contactList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-manrope, "Manrope", sans-serif);
+  font-size: 13px;
+  color: rgba(240, 244, 248, 0.5);
+  line-height: 1.5;
+}
+
+.contactList li a {
+  color: rgba(240, 244, 248, 0.5);
+  transition: color 0.2s ease;
+}
+
+.contactList li a:hover {
+  color: #007FFF;
+}
+
+.contactIcon {
+  font-size: 14px;
+  color: #007FFF;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Map section ── */
+.mapSection {
+  padding: 0 6% 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.mapHeader {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 32px 0 20px;
+}
+
+.mapLabel {
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #007FFF;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.mapNote {
+  font-family: var(--font-manrope, "Manrope", sans-serif);
+  font-size: 12px;
+  color: rgba(240, 244, 248, 0.3);
+  font-style: italic;
+}
+
+.mapEmbed {
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+  margin-bottom: 0;
+}
+
+.mapEmbed:hover {
+  opacity: 1;
+}
+
+.mapEmbed iframe {
+  display: block;
+  filter: grayscale(0.8) invert(0.9) hue-rotate(180deg);
+}
+
+/* ── Bottom bar ── */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 6%;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.copy {
+  font-family: var(--font-manrope, "Manrope", sans-serif);
+  font-size: 12.5px;
+  color: rgba(240, 244, 248, 0.35);
+}
+
+.legal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.legal a {
+  font-family: var(--font-manrope, "Manrope", sans-serif);
+  font-size: 12.5px;
+  color: rgba(240, 244, 248, 0.35);
+  transition: color 0.2s ease;
+}
+
+.legal a:hover {
+  color: #007FFF;
+}
+
+.legalDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(240, 244, 248, 0.2);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .brandCol {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 60px 5% 48px;
+  }
+
+  .brandCol {
+    grid-column: unset;
+  }
+
+  .mapSection {
+    padding: 0 5%;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 5%;
+  }
+}

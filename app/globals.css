@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
+/* ============================================================
+   PEMS DESIGN SYSTEM — GLOBAL STYLES
+   ============================================================ */
+
+/* ── Font Declarations ──────────────────────────────────── */
+@font-face {
+  font-family: "Hollow";
+  src: url("/fonts/Hollow-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Diamonds";
+  src: url("/fonts/Diamonds-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aristeo";
+  src: url("/fonts/Aristeo-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aristeo";
+  src: url("/fonts/Aristeo-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Design Tokens ──────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand colors */
+  --pems-azure: #007fff;
+  --pems-azure-dim: rgba(0, 127, 255, 0.15);
+  --pems-azure-glow: rgba(0, 127, 255, 0.35);
+  --pems-mist: #E0E5E9;
+  --pems-mist-dark: rgba(224, 229, 233, 0.06);
+  --pems-dark: #050505;
+  --pems-dark-1: #080a0f;
+  --pems-dark-2: #0d1018;
+  --pems-dark-3: #141820;
+  --pems-steel: #97999b;
+  --pems-steel-light: #c4c8cc;
+
+  /* Text */
+  --pems-white: #f0f4f8;
+  --pems-white-dim: rgba(240, 244, 248, 0.60);
+  --pems-white-ghost: rgba(240, 244, 248, 0.20);
+
+  /* Fonts */
+  --font-hollow: "Hollow", "Arial Narrow", sans-serif;
+  --font-diamonds: "Diamonds", serif;
+  --font-aristeo: "Aristeo", "Georgia", serif;
+  --font-manrope: var(--font-manrope, "Manrope", sans-serif);
+  --font-space-grotesk: var(--font-space-grotesk, "Space Grotesk", sans-serif);
+  --font-inter: var(--font-inter, "Inter", sans-serif);
+
+  /* Background */
+  --background: var(--pems-mist);
+  --foreground: #060810;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Reset / Base ───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--pems-mist);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope, var(--font-aristeo));
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default button styles */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Images */
+img,
+video {
+  display: block;
+  max-width: 100%;
 }

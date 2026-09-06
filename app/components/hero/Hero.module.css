@@ -1,0 +1,498 @@
+.hero {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background: #E0E5E9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+  position: absolute;
+
+  top: -10px;
+  left: 50%;
+
+  transform: translate(-50%, -40px);
+  opacity: 0;
+
+  width: 96%;
+  max-width: 1600px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 20;
+}
+
+.animateNavbarIn {
+  animation: navbarDropIn 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes navbarDropIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+
+/* ── Logo ─────────────────────────────────────────────── */
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 150px;
+  height: 90px;
+
+  flex-shrink: 0;
+  transform: translateX(-20px);
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* ── Navigation ───────────────────────────────────────── */
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+
+  gap: 45px;
+
+  font-family: var(--font-space-grotesk, sans-serif);
+}
+
+
+.navLinks a {
+  position: relative;
+
+  color: #060810;
+
+  font-size: 22px;
+  font-weight: 500;
+
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+/* Hover effect */
+
+.navLinks a:not(.quoteButton)::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -6px;
+
+  width: 0;
+  height: 1.5px;
+
+  background: #007FFF;
+
+  transition: width 0.25s ease;
+}
+
+
+.navLinks a:not(.quoteButton):hover {
+  color: #007FFF;
+}
+
+
+.navLinks a:not(.quoteButton):hover::after {
+  width: 100%;
+}
+
+
+/* ── Request a Quote / Contact Us ──────────────────────────────────── */
+
+.quoteButton {
+  padding: 12px 36px;
+
+  border: 1px solid #050505;
+  border-radius: 0px;
+
+  color: #FFFFFF !important;
+  background: #050505;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 12px !important;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.quoteButton:hover {
+  background: #007FFF;
+  border-color: #007FFF;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+}
+
+/* ── Mobile hamburger ──────────────────────────────────── */
+
+.mobileMenuBtn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  z-index: 25;
+}
+
+.mobileMenuBtn span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: #060810;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+/* ── Mobile menu overlay ──────────────────────────────── */
+
+.mobileMenu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(224, 229, 233, 0.97);
+  backdrop-filter: blur(10px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobileMenu a {
+  color: #060810;
+  font-family: var(--font-aristeo);
+  font-size: 28px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.mobileMenu a:hover {
+  color: #007FFF;
+}
+
+.mobileMenuOpen {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+
+/* =========================================
+   TEXT ANIMATION (PRECISION DRIVEN)
+   ========================================= */
+
+/* =========================================
+   HERO CONTROLS (SOCIALS + CTA)
+   ========================================= */
+
+.socialIcons {
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+  right: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 25;
+  pointer-events: auto;
+  /* Allow clicking */
+}
+
+.socialIcons a {
+  color: #007FFF;
+  transition: transform 0.25s ease, color 0.25s ease, filter 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialIcons a:hover {
+  transform: translateY(-3px) scale(1.05);
+  filter: brightness(1.2);
+}
+
+.ctaWrapper {
+  position: absolute;
+  bottom: 8%;
+  left: 14%;
+  z-index: 25;
+  pointer-events: auto;
+  /* Allow clicking */
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: #007FFF;
+  color: #fff;
+  border-radius: 0px;
+  font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.heroCta:hover {
+  background: #005bb5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 127, 255, 0.3);
+}
+
+.textContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  /* Layered behind the equipment */
+  pointer-events: none;
+}
+
+.textWrapperTop {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 4%;
+  overflow: hidden;
+  /* Enables the mask-reveal effect */
+}
+
+.textWrapperBottom {
+  position: absolute;
+  bottom: 1%;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5%;
+  overflow: hidden;
+}
+
+.heroTextTop,
+.heroTextBottom {
+  font-family: var(--font-aristeo, sans-serif);
+  font-size: clamp(75px, 15vw, 240px);
+  font-weight: 900;
+  color: #060810;
+  /* Bold, premium dark text */
+  line-height: 1;
+  letter-spacing: -4px;
+
+  opacity: 0;
+  transform: translateY(120%);
+  will-change: transform, opacity;
+}
+
+.heroTextTop.animateTextIn {
+  animation: revealText 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.5s forwards;
+}
+
+.heroTextBottom.animateTextBottomIn {
+  animation: revealText 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.7s forwards;
+}
+
+@keyframes revealText {
+  0% {
+    opacity: 0;
+    transform: translateY(120%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   EQUIPMENT ANIMATION
+   ========================================= */
+
+.equipmentContainer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-65px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+
+.equipmentImage {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  max-height: 85vh;
+  object-fit: contain;
+
+  /* Shadow */
+  filter: drop-shadow(-25px 25px 20px rgba(0, 0, 0, 0.35));
+
+  transform: translateY(-120%);
+  opacity: 1;
+  will-change: transform;
+}
+
+.animateIn {
+  animation:
+    smoothZoom 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    subtleFloat 5s ease-in-out 3.2s infinite;
+}
+
+@keyframes smoothZoom {
+  0% {
+    transform: translateY(-120%) scale(0.85);
+  }
+
+  55% {
+    transform: translateY(0) scale(0.85);
+  }
+
+  100% {
+    transform: translateY(0) scale(1.1);
+  }
+}
+
+@keyframes subtleFloat {
+  0% {
+    transform: translateY(0) scale(1.1);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.1);
+  }
+
+  100% {
+    transform: translateY(0) scale(1.1);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .navLinks {
+    gap: 24px;
+    font-size: 22px;
+  }
+
+  .navLinks a {
+    font-size: 22px;
+  }
+
+  .equipmentImage {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .navLeft {
+    gap: 15px;
+    /* Adjust spacing for logo */
+  }
+
+  .quoteButton {
+    display: none;
+    /* Usually hide full CTA on mobile nav, or adjust as needed */
+  }
+
+  .mobileMenuBtn {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+
+  .equipmentImage {
+    max-width: 90%;
+  }
+
+  .socialIcons {
+    top: 50%;
+    bottom: auto;
+    right: 4%;
+    transform: translateY(-50%);
+    gap: 14px;
+    flex-direction: column;
+  }
+
+  .socialIcons svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ctaWrapper {
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+  }
+
+  .heroCta {
+    padding: 14px 28px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
