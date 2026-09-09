@@ -12,8 +12,8 @@ export default function Home() {
     <main>
       <Hero />
       <About />
-      <Services />
       <WhyPems />
+      <Services />
       <Process />
       <Cta />
       <Footer />

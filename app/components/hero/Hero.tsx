@@ -94,10 +94,10 @@ export default function Hero() {
           </svg>
         </button>
 
-        <a href="#home"     onClick={closeMenu}>Home</a>
-        <a href="#about"    onClick={closeMenu}>About Us</a>
+        <a href="#home" onClick={closeMenu}>Home</a>
+        <a href="#about" onClick={closeMenu}>About Us</a>
         <a href="#services" onClick={closeMenu}>Services</a>
-        <a href="#contact"  onClick={closeMenu}>Contact Us</a>
+        <a href="#contact" onClick={closeMenu}>Contact Us</a>
       </div>
 
 
@@ -120,7 +120,7 @@ export default function Hero() {
 
         {/* CTA Button */}
         <div className={`${styles.ctaWrapper} ${animateIn ? styles.animateFadeIn : ""}`}>
-          <a href="#contact" className={styles.heroCta}>Let's Build Something</a>
+          <a href="#contact" className={styles.heroCta}>Let&apos;s Build Something</a>
         </div>
 
         <div className={styles.textWrapperTop}>
@@ -133,7 +133,7 @@ export default function Hero() {
 
       <div className={styles.equipmentContainer}>
         <img
-          src="/equipment (2).png"
+          src="/equip.png"
           alt="Industrial Equipment Cabinet"
           className={`${styles.equipmentImage} ${animateIn ? styles.animateIn : ""}`}
         />

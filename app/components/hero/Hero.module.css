@@ -273,7 +273,7 @@
 
 .socialIcons {
   position: absolute;
-  top: 35%;
+  top: 45%;
   transform: translateY(-50%);
   right: 3%;
   display: flex;
@@ -301,7 +301,7 @@
 .ctaWrapper {
   position: absolute;
   bottom: 8%;
-  left: 14%;
+  left: 8%;
   z-index: 25;
   pointer-events: auto;
   /* Allow clicking */
@@ -410,7 +410,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(-65px);
+  transform: translateY(-150px);
   z-index: 10;
   pointer-events: none;
 }
@@ -447,21 +447,21 @@
   }
 
   100% {
-    transform: translateY(0) scale(1.1);
+    transform: translateY(0) scale(1.9);
   }
 }
 
 @keyframes subtleFloat {
   0% {
-    transform: translateY(0) scale(1.1);
+    transform: translateY(0) scale(1.9);
   }
 
   50% {
-    transform: translateY(-8px) scale(1.1);
+    transform: translateY(-8px) scale(1.9);
   }
 
   100% {
-    transform: translateY(0) scale(1.1);
+    transform: translateY(0) scale(1.9);
   }
 }
 
@@ -499,9 +499,9 @@
   }
 
   .logo {
-    width: 110px;
-    height: 68px;
-    transform: translateX(0);
+    width: 90px;
+    height: 60px;
+    transform: translateX(-5px);
   }
 
   .quoteButton {
@@ -546,13 +546,14 @@
     display: flex;
     justify-content: flex-start;
     margin-bottom: 5vh;
+    transform: translateY(120px);
     /* Controlled gap above container */
     z-index: 6;
   }
 
   .heroTextTop {
     font-size: clamp(42px, 12vw, 72px);
-    letter-spacing: -2px;
+    letter-spacing: -1px;
   }
 
   /* 2. CONTAINER / CRANE */
@@ -560,7 +561,7 @@
     position: relative;
     top: auto;
     left: auto;
-    transform: none;
+    transform: translateY(-81px);
     width: 100%;
     order: 2;
     flex: 0 0 auto;
@@ -588,6 +589,7 @@
     right: auto;
     width: 100%;
     padding: 0 4%;
+    transform: translateY(-80px);
     order: 3;
     display: flex;
     justify-content: flex-end;
@@ -610,6 +612,7 @@
     width: 100%;
     order: 4;
     display: flex;
+    transform: translateY(-60px);
     justify-content: center;
     z-index: 25;
     margin-top: 10px;
@@ -638,16 +641,72 @@
   }
 }
 
+/* ── Mobile / Large Phones: 391px–768px ── */
+@media (min-width: 391px) and (max-width: 768px) {
+
+  .hero {
+    min-height: 84svh;
+    padding-top: 90px;
+    padding-bottom: 20px;
+  }
+
+  /* PRECISION */
+  .textWrapperTop {
+    transform: translateY(200px);
+    margin-bottom: 4vh;
+  }
+
+  .heroTextTop {
+    font-size: clamp(52px, 15vw, 90px);
+    letter-spacing: -1px;
+  }
+
+  /* CONTAINER */
+  .equipmentContainer {
+    transform: translateY(-60px);
+    margin-bottom: 3vh;
+  }
+
+  .equipmentImage {
+    width: 75%;
+    max-width: 420px;
+    max-height: 40vh;
+  }
+
+  /* DRIVEN */
+  .textWrapperBottom {
+    transform: translateY(-30px);
+    margin-bottom: 10px;
+  }
+
+  .heroTextBottom {
+    font-size: clamp(52px, 15vw, 90px);
+    letter-spacing: -1px;
+  }
+
+  /* CTA */
+  .ctaWrapper {
+    margin-top: 60px;
+  }
+
+  .heroCta {
+    padding: 12px 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
+
 /* ── Responsive: Small phones (≤ 390px) ── */
 @media (max-width: 390px) {
   .hero {
+    min-height: 88svh;
     padding-top: 90px;
     padding-bottom: 20px;
   }
 
   .heroTextTop,
   .heroTextBottom {
-    font-size: clamp(38px, 10vw, 56px);
+    font-size: clamp(52px, 15vw, 90px);
   }
 
   .equipmentImage {

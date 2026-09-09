@@ -3,7 +3,7 @@
    ══════════════════════════════════════════ */
 
 .services {
-  background: #E0E5E9;
+  background: #050505;
   padding: 120px 6% 100px;
   position: relative;
   overflow: hidden;
@@ -57,21 +57,21 @@
   font-size: clamp(32px, 3.8vw, 54px);
   font-weight: 700;
   line-height: 1.1;
-  color: #060810;
+  color: #FFFFFF;
   margin-bottom: 22px;
 }
 
 .headingOutline {
   font-family: var(--font-space-grotesk, "Space Grotesk", sans-serif);
   font-weight: 700;
-  -webkit-text-stroke: 1.5px #060810;
+  -webkit-text-stroke: 1.5px #FFFFFF;
   color: transparent;
 }
 
 .subheading {
   font-family: var(--font-manrope, "Manrope", sans-serif);
   font-size: 15px;
-  color: rgba(6, 8, 16, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   line-height: 1.8;
   max-width: 560px;
 }
@@ -99,19 +99,19 @@
 
   /* Staggered reveal — initial hidden state */
   opacity: 0;
-  transform: translate3d(0, 44px, 0);
+  transform: translateY(40px);
   transition:
     opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.3s ease,
     box-shadow 0.3s ease;
-  transition-delay: calc(var(--i, 0) * 80ms);
+  transition-delay: calc(var(--i, 0) * 100ms);
 }
 
 /* Section is in viewport — reveal cards */
 .revealed .card {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
+  transform: translateY(0);
 }
 
 /* Hover elevation */
@@ -281,11 +281,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
-
-  /* Tighten stagger on tablet so animation feels snappy */
-  .card {
-    transition-delay: calc(var(--i, 0) * 60ms);
-  }
 }
 
 @media (max-width: 520px) {
@@ -317,11 +312,6 @@
 
   .cardDesc {
     font-size: 12px;
-  }
-
-  /* Faster stagger on mobile */
-  .card {
-    transition-delay: calc(var(--i, 0) * 40ms);
   }
 }
 

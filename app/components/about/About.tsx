@@ -98,7 +98,7 @@ export default function About() {
         <div className={styles.rightCol}>
           <div className={styles.imageBlock}>
             <img
-              src="/massive-steel-beams-metal-structures-dominate-this-expansive-factory-interior-showcasing-industrial-design-sense-scale-warm-lighting-contrasts-with-cool-tones-creating-dramatic-atmospher_908344-82269.avif"
+              src="/massive-steel.avif"
               alt="PEMS industrial engineering operations"
               className={styles.mainImage}
             />
