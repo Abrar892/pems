@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import NextImage from "next/image";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -43,7 +44,14 @@ export default function Hero() {
         {/* Left Group */}
         <div className={styles.navLeft}>
           <a href="#home" className={styles.logo}>
-            <img src="/logo.jpg" alt="PEMS Logo" />
+            <NextImage
+              src="/logo.jpg"
+              alt="PEMS Logo"
+              width={150}
+              height={90}
+              priority
+              quality={85}
+            />
           </a>
 
           {/* Navigation links */}
@@ -136,6 +144,8 @@ export default function Hero() {
           src="/equip.png"
           alt="Industrial Equipment Cabinet"
           className={`${styles.equipmentImage} ${animateIn ? styles.animateIn : ""}`}
+          fetchPriority="high"
+          decoding="sync"
         />
       </div>
 

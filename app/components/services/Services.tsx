@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./Services.module.css";
 
 const services = [
@@ -144,11 +145,14 @@ export default function Services() {
           >
             {/* Image */}
             <div className={styles.imageWrap}>
-              <img
+              <Image
                 src={svc.image}
                 alt={svc.title}
                 className={styles.image}
+                fill
+                sizes="(max-width: 768px) 45vw, (max-width: 1200px) 45vw, 30vw"
                 style={{ objectPosition: svc.imagePos }}
+                quality={75}
                 loading="lazy"
               />
               <div className={styles.imageOverlay} />

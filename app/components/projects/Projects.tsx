@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./Projects.module.css";
 
 const projects = [
@@ -93,7 +94,15 @@ export default function Projects() {
             style={{ transitionDelay: `${i * 80}ms` }}
           >
             <div className={styles.imageWrap}>
-              <img src={proj.image} alt={proj.title} className={styles.image} />
+              <Image
+                src={proj.image}
+                alt={proj.title}
+                className={styles.image}
+                fill
+                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
+                quality={75}
+                loading="lazy"
+              />
               <div className={styles.imageOverlay} />
               <span className={styles.categoryBadge}>{proj.category}</span>
             </div>

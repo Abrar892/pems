@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -12,7 +13,15 @@ export default function Footer() {
         {/* Brand col */}
         <div className={styles.brandCol}>
           <a href="#home" className={styles.logoLink}>
-            <img src="/logo.jpg" alt="PEMS Logo" className={styles.logo} />
+            <Image
+              src="/logo.jpg"
+              alt="PEMS Logo"
+              className={styles.logo}
+              width={140}
+              height={84}
+              quality={80}
+              loading="lazy"
+            />
           </a>
           <p className={styles.brandDesc}>
             Pakistan Engineering Maintenance Service (PEMS) is a specialized

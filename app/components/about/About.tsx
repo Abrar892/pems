@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./About.module.css";
 
 const stats = [
@@ -97,10 +98,14 @@ export default function About() {
         {/* Right — visual */}
         <div className={styles.rightCol}>
           <div className={styles.imageBlock}>
-            <img
+            <Image
               src="/massive-steel.avif"
               alt="PEMS industrial engineering operations"
               className={styles.mainImage}
+              fill
+              sizes="(max-width: 600px) 90vw, (max-width: 1024px) 90vw, 47vw"
+              quality={78}
+              loading="lazy"
             />
             <div className={styles.imageAccent} />
           </div>

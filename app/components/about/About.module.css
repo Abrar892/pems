@@ -131,15 +131,16 @@
 
 .imageBlock {
   position: relative;
+  width: 100%;
+  height: 650px;
 }
 
 .mainImage {
-  width: 100%;
-  height: 650px;
   object-fit: cover;
   object-position: center;
   border-radius: 12px;
   filter: brightness(0.7) saturate(0.8);
+  display: block;
 }
 
 
@@ -176,7 +177,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .mainImage {
+  .imageBlock {
     height: 260px;
   }
 }
