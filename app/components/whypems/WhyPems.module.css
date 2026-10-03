@@ -27,7 +27,7 @@
 
 .inner {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: minmax(280px, 380px) 1fr;
   gap: 80px;
   align-items: start;
   max-width: 1400px;
@@ -161,5 +161,21 @@
   .item {
     grid-template-columns: 40px 1fr;
     gap: 14px;
+  }
+
+  .itemTitle {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 380px) {
+  .section {
+    padding: 60px 4%;
+  }
+
+  .item {
+    grid-template-columns: 36px 1fr;
+    gap: 10px;
+    padding: 24px 0;
   }
 }

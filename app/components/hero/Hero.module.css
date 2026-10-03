@@ -1,15 +1,11 @@
 .hero {
   position: relative;
-
-  width: 100%;
-  min-height: 100vh;
-
+  width: 100vw;
+  aspect-ratio: 16 / 9;
   background: #E0E5E9;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   overflow: hidden;
 }
 
@@ -19,20 +15,15 @@
 
 .navbar {
   position: absolute;
-
   top: -10px;
   left: 50%;
-
   transform: translate(-50%, -40px);
   opacity: 0;
-
   width: 96%;
   max-width: 1600px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   z-index: 20;
 }
 
@@ -45,7 +36,6 @@
     opacity: 0;
     transform: translate(-50%, -40px);
   }
-
   100% {
     opacity: 1;
     transform: translate(-50%, 0);
@@ -57,15 +47,9 @@
 }
 
 @keyframes simpleFadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
-
 
 /* ── Logo ─────────────────────────────────────────────── */
 
@@ -73,10 +57,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 150px;
   height: 90px;
-
   flex-shrink: 0;
   transform: translateX(-20px);
 }
@@ -86,7 +68,6 @@
   height: 100%;
   object-fit: contain;
 }
-
 
 /* ── Navigation ───────────────────────────────────────── */
 
@@ -105,76 +86,50 @@
 .navLinks {
   display: flex;
   align-items: center;
-
   gap: 45px;
-
   font-family: var(--font-space-grotesk, sans-serif);
 }
 
-
 .navLinks a {
   position: relative;
-
   color: #060810;
-
-  font-size: 22px;
+  font-size: clamp(14px, 1.5vw, 22px);
   font-weight: 500;
-
-  transition:
-    color 0.25s ease,
-    opacity 0.25s ease;
+  transition: color 0.25s ease, opacity 0.25s ease;
 }
-
-
-/* Hover effect */
 
 .navLinks a:not(.quoteButton)::after {
   content: "";
-
   position: absolute;
-
   left: 0;
   bottom: -6px;
-
   width: 0;
   height: 1.5px;
-
   background: #007FFF;
-
   transition: width 0.25s ease;
 }
-
 
 .navLinks a:not(.quoteButton):hover {
   color: #007FFF;
 }
 
-
 .navLinks a:not(.quoteButton):hover::after {
   width: 100%;
 }
 
-
 /* ── Request a Quote / Contact Us ──────────────────────────────────── */
 
 .quoteButton {
-  padding: 12px 36px;
-
+  padding: clamp(6px, 1vw, 12px) clamp(16px, 2.5vw, 36px);
   border: 1px solid #050505;
   border-radius: 0px;
-
   color: #FFFFFF !important;
   background: #050505;
   font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 12px !important;
+  font-size: clamp(10px, 1vw, 12px) !important;
   font-weight: 500;
   letter-spacing: 0.5px;
-
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .quoteButton:hover {
@@ -264,25 +219,49 @@
 }
 
 /* =========================================
-   TEXT ANIMATION (PRECISION DRIVEN)
-   ========================================= */
-
-/* =========================================
    HERO CONTROLS (SOCIALS + CTA)
    ========================================= */
 
 .socialIcons {
   position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  right: 3%;
+  right: 2%;
+  top: 35%;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  z-index: 25;
+  gap: clamp(10px, 1.5vw, 20px);
   pointer-events: auto;
-  /* Allow clicking */
+  opacity: 0;
+  padding: clamp(12px, 1.5vw, 24px) clamp(8px, 1vw, 16px);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transform: scale(clamp(0.45, 0.8vw, 0.9));
+  transform-origin: right center;
+}
+
+.socialIcons svg {
+  width: clamp(16px, 1.5vw, 24px);
+  height: clamp(16px, 1.5vw, 24px);
+}
+
+.animateSocialBox {
+  animation: slideSocialBox 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
+}
+
+@keyframes slideSocialBox {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .socialIcons a {
@@ -291,6 +270,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+}
+
+.animateSocialIcon {
+  animation: simpleFadeIn 0.5s ease forwards;
 }
 
 .socialIcons a:hover {
@@ -300,27 +284,30 @@
 
 .ctaWrapper {
   position: absolute;
-  bottom: 8%;
+  bottom: 18%;
   left: 8%;
-  z-index: 25;
+  z-index: 10;
   pointer-events: auto;
-  /* Allow clicking */
 }
 
 .heroCta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
   background: #007FFF;
   color: #fff;
   border-radius: 0px;
   font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Dynamic sizing as requested */
+  font-size: clamp(0.55rem, 1.1vw, 0.95rem);
+  padding: clamp(4px, 0.8vw, 10px) clamp(8px, 1.5vw, 20px);
+  max-width: 35vw;
+  white-space: nowrap;
 }
 
 .heroCta:hover {
@@ -329,6 +316,10 @@
   box-shadow: 0 8px 24px rgba(0, 127, 255, 0.3);
 }
 
+/* =========================================
+   TEXT ANIMATION (PRECISION DRIVEN)
+   ========================================= */
+
 .textContainer {
   position: absolute;
   top: 0;
@@ -336,66 +327,60 @@
   width: 100%;
   height: 100%;
   z-index: 5;
-  /* Layered behind the equipment */
   pointer-events: none;
 }
 
 .textWrapperTop {
   position: absolute;
-  top: 15%;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  padding-left: 4%;
+  top: 18%;
+  left: 4%;
+  width: 42%;
+  z-index: 2;
   overflow: hidden;
-  /* Enables the mask-reveal effect */
 }
 
 .textWrapperBottom {
   position: absolute;
-  bottom: 1%;
-  right: 0;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 5%;
+  bottom: 8%;
+  right: 4%;
+  width: 45%;
+  z-index: 2;
   overflow: hidden;
 }
 
-.heroTextTop,
-.heroTextBottom {
-  font-family: var(--font-aristeo, sans-serif);
-  font-size: clamp(75px, 15vw, 240px);
-  font-weight: 900;
-  color: #060810;
-  /* Bold, premium dark text */
-  line-height: 1;
-  letter-spacing: -4px;
-
+.heroImageTop,
+.heroImageBottom {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
   opacity: 0;
-  transform: translateY(120%);
   will-change: transform, opacity;
 }
 
-.heroTextTop.animateTextIn {
-  animation: revealText 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.5s forwards;
+.heroImageTop {
+  transform: translateX(-120%);
 }
 
-.heroTextBottom.animateTextBottomIn {
-  animation: revealText 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.7s forwards;
+.heroImageBottom {
+  transform: translateX(120%);
 }
 
-@keyframes revealText {
-  0% {
-    opacity: 0;
-    transform: translateY(120%);
-  }
+.heroImageTop.animateTextIn {
+  animation: slideFromLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.5s forwards;
+}
 
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.heroImageBottom.animateTextBottomIn {
+  animation: slideFromRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.7s forwards;
+}
+
+@keyframes slideFromLeft {
+  0% { opacity: 0; transform: translateX(-120%); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromRight {
+  0% { opacity: 0; transform: translateX(120%); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 
 /* =========================================
@@ -405,28 +390,23 @@
 .equipmentContainer {
   position: absolute;
   left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(-150px);
-  z-index: 10;
+  z-index: 2;
   pointer-events: none;
+  overflow: hidden;
 }
-
 
 .equipmentImage {
   width: 100%;
-  max-width: 800px;
-  height: auto;
-  max-height: 85vh;
-  object-fit: contain;
-
-  /* Shadow */
-  filter: drop-shadow(-25px 25px 20px rgba(0, 0, 0, 0.35));
-
-  transform: translateY(-120%);
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1);
   opacity: 1;
   will-change: transform;
 }
@@ -438,55 +418,21 @@
 }
 
 @keyframes smoothZoom {
-  0% {
-    transform: translateY(-120%) scale(0.85);
-  }
-
-  55% {
-    transform: translateY(0) scale(0.85);
-  }
-
-  100% {
-    transform: translateY(0) scale(1.9);
-  }
+  0% { transform: translateY(10%) scale(1); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
 @keyframes subtleFloat {
-  0% {
-    transform: translateY(0) scale(1.9);
-  }
-
-  50% {
-    transform: translateY(-8px) scale(1.9);
-  }
-
-  100% {
-    transform: translateY(0) scale(1.9);
-  }
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-1%) scale(1); }
+  100% { transform: translateY(0) scale(1); }
 }
 
-/* ── Responsive: Tablet ── */
-@media (max-width: 1024px) {
-  .navLinks {
-    gap: 24px;
-    font-size: 22px;
-  }
-
-  .navLinks a {
-    font-size: 22px;
-  }
-
-  .equipmentImage {
-    max-width: 600px;
-  }
-}
-
-/* ── Responsive: Mobile ── */
+/* ── Responsive: Mobile Adjustments (Navbar only, hero stays 16:9) ── */
 @media (max-width: 768px) {
-
   /* --- Navbar --- */
   .navbar {
-    top: 15px;
+    top: 10px;
     transform: translate(-50%, 0);
   }
 
@@ -499,9 +445,9 @@
   }
 
   .logo {
-    width: 90px;
-    height: 60px;
-    transform: translateX(-5px);
+    width: clamp(70px, 15vw, 150px);
+    height: auto;
+    transform: translateX(0);
   }
 
   .quoteButton {
@@ -514,212 +460,5 @@
 
   .mobileMenu {
     display: flex;
-  }
-
-  /* --- Hero Composition (Flex Column) --- */
-  .hero {
-    min-height: 100svh;
-    padding-top: 100px;
-    /* Safe space for navbar */
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    /* Do not evenly distribute space, pack it towards top */
-    overflow: hidden;
-  }
-
-  .textContainer {
-    display: contents;
-    /* Unwraps children into .hero's flex flow */
-  }
-
-  /* 1. PRECISION */
-  .textWrapperTop {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    padding: 0 3%;
-    order: 1;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 5vh;
-    transform: translateY(120px);
-    /* Controlled gap above container */
-    z-index: 6;
-  }
-
-  .heroTextTop {
-    font-size: clamp(42px, 12vw, 72px);
-    letter-spacing: -1px;
-  }
-
-  /* 2. CONTAINER / CRANE */
-  .equipmentContainer {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: translateY(-81px);
-    width: 100%;
-    order: 2;
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 5vh;
-    /* Controlled gap below container */
-    z-index: 10;
-    pointer-events: none;
-  }
-
-  .equipmentImage {
-    width: 75%;
-    max-width: 300px;
-    height: auto;
-    max-height: 40vh;
-    object-fit: contain;
-  }
-
-  /* 3. DRIVEN */
-  .textWrapperBottom {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    width: 100%;
-    padding: 0 4%;
-    transform: translateY(-80px);
-    order: 3;
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
-    /* Small gap before CTA */
-    z-index: 6;
-  }
-
-  .heroTextBottom {
-    font-size: clamp(42px, 12vw, 72px);
-    letter-spacing: -2px;
-  }
-
-  /* 4. CTA */
-  .ctaWrapper {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    width: 100%;
-    order: 4;
-    display: flex;
-    transform: translateY(-60px);
-    justify-content: center;
-    z-index: 25;
-    margin-top: 10px;
-  }
-
-  .heroCta {
-    padding: 5px 10px;
-    font-size: 10px;
-    letter-spacing: 1px;
-  }
-
-  /* --- Social Icons (Absolute on right edge) --- */
-  .socialIcons {
-    position: absolute;
-    top: 35%;
-    right: 4%;
-    transform: translateY(-50%);
-    flex-direction: column;
-    gap: 16px;
-    z-index: 25;
-  }
-
-  .socialIcons svg {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-/* ── Mobile / Large Phones: 391px–768px ── */
-@media (min-width: 391px) and (max-width: 768px) {
-
-  .hero {
-    min-height: 84svh;
-    padding-top: 90px;
-    padding-bottom: 20px;
-  }
-
-  /* PRECISION */
-  .textWrapperTop {
-    transform: translateY(200px);
-    margin-bottom: 4vh;
-  }
-
-  .heroTextTop {
-    font-size: clamp(52px, 15vw, 90px);
-    letter-spacing: -1px;
-  }
-
-  /* CONTAINER */
-  .equipmentContainer {
-    transform: translateY(-60px);
-    margin-bottom: 3vh;
-  }
-
-  .equipmentImage {
-    width: 75%;
-    max-width: 420px;
-    max-height: 40vh;
-  }
-
-  /* DRIVEN */
-  .textWrapperBottom {
-    transform: translateY(-30px);
-    margin-bottom: 10px;
-  }
-
-  .heroTextBottom {
-    font-size: clamp(52px, 15vw, 90px);
-    letter-spacing: -1px;
-  }
-
-  /* CTA */
-  .ctaWrapper {
-    margin-top: 60px;
-  }
-
-  .heroCta {
-    padding: 12px 20px;
-    font-size: 14px;
-    letter-spacing: 1px;
-  }
-}
-
-/* ── Responsive: Small phones (≤ 390px) ── */
-@media (max-width: 390px) {
-  .hero {
-    min-height: 88svh;
-    padding-top: 90px;
-    padding-bottom: 20px;
-  }
-
-  .heroTextTop,
-  .heroTextBottom {
-    font-size: clamp(52px, 15vw, 90px);
-  }
-
-  .equipmentImage {
-    width: 70%;
-    max-width: 250px;
-    max-height: 35vh;
-  }
-
-  .textWrapperTop {
-    margin-bottom: 4vh;
-  }
-
-  .equipmentContainer {
-    margin-bottom: 4vh;
   }
 }

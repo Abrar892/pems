@@ -247,3 +247,26 @@
     padding: 20px 5%;
   }
 }
+
+@media (max-width: 380px) {
+  .top {
+    padding: 48px 4% 36px;
+    gap: 28px;
+  }
+
+  .mapSection {
+    padding: 0 4%;
+  }
+
+  .bottom {
+    padding: 16px 4%;
+  }
+
+  .copy {
+    font-size: 11px;
+  }
+
+  .mapEmbed iframe {
+    height: 220px;
+  }
+}

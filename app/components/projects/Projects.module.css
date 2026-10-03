@@ -22,6 +22,13 @@
   margin-bottom: 72px;
 }
 
+@media (max-width: 1100px) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
 .sectionTag {
   display: flex;
   align-items: center;
@@ -47,11 +54,11 @@
 
 .heading {
   font-family: var(--font-space-grotesk, "Space Grotesk", sans-serif);
-  font-size: clamp(36px, 4vw, 58px);
+  font-size: clamp(28px, 4vw, 58px);
   font-weight: 700;
   line-height: 1.05;
   color: #f0f4f8;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .headingOutline {
@@ -219,20 +226,13 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 1100px) {
-  .header {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 640px) {
   .projects {
     padding: 80px 5%;
+  }
+
+  .header {
+    margin-bottom: 48px;
   }
 
   .grid {
@@ -245,7 +245,22 @@
     gap: 20px;
   }
 
-  .heading {
-    white-space: normal;
+  .ctaNote {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .projects {
+    padding: 60px 4%;
+  }
+
+  .cardTitle {
+    font-size: 15px;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    text-align: center;
   }
 }

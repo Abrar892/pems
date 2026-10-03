@@ -266,3 +266,27 @@
     font-size: 20px;
   }
 }
+
+@media (max-width: 480px) {
+  .process {
+    padding: 60px 4%;
+  }
+
+  .header {
+    margin-bottom: 56px;
+  }
+
+  .step,
+  .stepLeft,
+  .stepRight {
+    padding: 24px 0 24px 52px;
+  }
+
+  .stepTitle {
+    font-size: 18px;
+  }
+
+  .stepDesc {
+    font-size: 14px;
+  }
+}

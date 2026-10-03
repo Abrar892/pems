@@ -163,15 +163,22 @@
     grid-template-columns: 1fr;
     gap: 48px;
   }
-
-
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .about {
     padding: 80px 5% 60px;
   }
 
+  .heading {
+    font-size: clamp(28px, 6vw, 42px);
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding: 72px 5% 56px;
+  }
 
   .statsRow {
     grid-template-columns: 1fr 1fr;
@@ -179,5 +186,19 @@
 
   .imageBlock {
     height: 260px;
+  }
+}
+
+@media (max-width: 380px) {
+  .about {
+    padding: 60px 4% 48px;
+  }
+
+  .statsRow {
+    grid-template-columns: 1fr;
+  }
+
+  .statCard {
+    padding: 18px 16px;
   }
 }

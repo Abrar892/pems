@@ -140,45 +140,45 @@ export default function Services() {
           <article
             key={svc.id}
             className={styles.card}
+            tabIndex={0}
             // @ts-expect-error CSS custom property
             style={{ "--i": i }}
           >
-            {/* Image */}
+            {/* Image fills the entire card */}
             <div className={styles.imageWrap}>
               <Image
                 src={svc.image}
                 alt={svc.title}
                 className={styles.image}
                 fill
-                sizes="(max-width: 768px) 45vw, (max-width: 1200px) 45vw, 30vw"
+                sizes="(max-width: 520px) 48vw, (max-width: 1200px) 45vw, 30vw"
                 style={{ objectPosition: svc.imagePos }}
                 quality={75}
                 loading="lazy"
               />
-              <div className={styles.imageOverlay} />
+
+              {/* Service number — visible by default, hidden on hover */}
               <span className={styles.cardNum}>{svc.id}</span>
-            </div>
 
-            {/* Content */}
-            <div className={styles.content}>
-              <h3 className={styles.cardTitle}>{svc.title}</h3>
-              <p className={styles.cardDesc}>{svc.desc}</p>
-              <a href="#contact" className={styles.cardLink}>
-                Get a Quote
-                <svg
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className={styles.linkArrow}
-                >
-                  <path d="M3 8h10M9 4l4 4-4 4" />
-                </svg>
-              </a>
+              {/* Hover/focus overlay with title, desc, link */}
+              <div className={styles.hoverOverlay}>
+                <span className={styles.overlayNum}>{svc.id}</span>
+                <h3 className={styles.overlayTitle}>{svc.title}</h3>
+                <p className={styles.overlayDesc}>{svc.desc}</p>
+                <a href="#contact" className={styles.overlayLink}>
+                  Get a Quote
+                  <svg
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className={styles.linkArrow}
+                  >
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                  </svg>
+                </a>
+              </div>
             </div>
-
-            {/* Accent bar */}
-            <div className={styles.accentBar} />
           </article>
         ))}
       </div>
