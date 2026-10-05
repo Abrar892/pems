@@ -34,7 +34,7 @@ export default function Hero() {
 
         {/* CTA Button */}
         <div className={`${styles.ctaWrapper} ${animateIn ? styles.animateFadeIn : ""}`}>
-          <a href="#contact" className={styles.heroCta}>Let&apos;s Build Something</a>
+          <a href="#services" className={styles.heroCta}>Let&apos;s Build Something</a>
         </div>
 
         <div className={styles.textWrapperTop}>
