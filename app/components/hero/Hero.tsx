@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import NextImage from "next/image";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
   const [animateIn, setAnimateIn] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   // Entrance animation trigger
   useEffect(() => {
@@ -14,101 +13,8 @@ export default function Hero() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Escape key closes menu
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  // Lock / restore body scroll when menu opens / closes
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
-
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
-
   return (
     <section className={styles.hero} id="home">
-
-      {/* ================= NAVBAR ================= */}
-      <nav className={`${styles.navbar} ${animateIn ? styles.animateNavbarIn : ""}`}>
-
-        {/* Left Group */}
-        <div className={styles.navLeft}>
-          <a href="#home" className={styles.logo}>
-            <NextImage
-              src="/logo.jpg"
-              alt="PEMS Logo"
-              width={150}
-              height={90}
-              priority
-              quality={85}
-            />
-          </a>
-
-          {/* Navigation links */}
-          <div className={styles.navLinks}>
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#services">Services</a>
-          </div>
-        </div>
-
-        {/* Right Group */}
-        <div className={styles.navRight}>
-          <a href="#contact" className={styles.quoteButton}>
-            CONTACT US
-          </a>
-
-          {/* Mobile hamburger */}
-          <button
-            className={styles.mobileMenuBtn}
-            aria-label="Open navigation menu"
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen(true)}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-
-      </nav>
-
-      {/* Mobile menu overlay */}
-      <div
-        className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Navigation menu"
-      >
-        {/* Close button */}
-        <button
-          className={styles.mobileMenuClose}
-          aria-label="Close navigation menu"
-          onClick={closeMenu}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </button>
-
-        <a href="#home" onClick={closeMenu}>Home</a>
-        <a href="#about" onClick={closeMenu}>About Us</a>
-        <a href="#services" onClick={closeMenu}>Services</a>
-        <a href="#contact" onClick={closeMenu}>Contact Us</a>
-      </div>
-
-
       {/* ================= HERO CONTENT ================= */}
 
       {/* Decorative Text & Controls */}
@@ -154,13 +60,18 @@ export default function Hero() {
       </div>
 
       <div className={styles.equipmentContainer}>
-        <img
-          src="/room2.png"
-          alt="Industrial Room"
-          className={`${styles.equipmentImage} ${animateIn ? styles.animateIn : ""}`}
-          fetchPriority="high"
-          decoding="sync"
-        />
+        <picture>
+          {/* Mobile: portrait 9:16 image for screens < 765px */}
+          <source media="(max-width: 764px)" srcSet="/room.png" />
+          {/* Desktop: default landscape image */}
+          <img
+            src="/room2.png"
+            alt="PEMS Industrial Facility"
+            className={`${styles.equipmentImage} ${animateIn ? styles.animateIn : ""}`}
+            fetchPriority="high"
+            decoding="sync"
+          />
+        </picture>
       </div>
 
     </section>

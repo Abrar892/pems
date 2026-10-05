@@ -1,11 +1,15 @@
 .hero {
   position: relative;
-  width: 100vw;
-  aspect-ratio: 16 / 9;
-  background: #E0E5E9;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background: #FFFFFF;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   overflow: hidden;
 }
 
@@ -15,15 +19,20 @@
 
 .navbar {
   position: absolute;
+
   top: -10px;
   left: 50%;
+
   transform: translate(-50%, -40px);
   opacity: 0;
+
   width: 96%;
   max-width: 1600px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   z-index: 20;
 }
 
@@ -36,6 +45,7 @@
     opacity: 0;
     transform: translate(-50%, -40px);
   }
+
   100% {
     opacity: 1;
     transform: translate(-50%, 0);
@@ -47,9 +57,15 @@
 }
 
 @keyframes simpleFadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
+
 
 /* ── Logo ─────────────────────────────────────────────── */
 
@@ -57,8 +73,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 150px;
   height: 90px;
+
   flex-shrink: 0;
   transform: translateX(-20px);
 }
@@ -68,6 +86,7 @@
   height: 100%;
   object-fit: contain;
 }
+
 
 /* ── Navigation ───────────────────────────────────────── */
 
@@ -86,50 +105,76 @@
 .navLinks {
   display: flex;
   align-items: center;
+
   gap: 45px;
+
   font-family: var(--font-space-grotesk, sans-serif);
 }
 
+
 .navLinks a {
   position: relative;
+
   color: #060810;
-  font-size: clamp(14px, 1.5vw, 22px);
+
+  font-size: 22px;
   font-weight: 500;
-  transition: color 0.25s ease, opacity 0.25s ease;
+
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
 }
+
+
+/* Hover effect */
 
 .navLinks a:not(.quoteButton)::after {
   content: "";
+
   position: absolute;
+
   left: 0;
   bottom: -6px;
+
   width: 0;
   height: 1.5px;
+
   background: #007FFF;
+
   transition: width 0.25s ease;
 }
+
 
 .navLinks a:not(.quoteButton):hover {
   color: #007FFF;
 }
 
+
 .navLinks a:not(.quoteButton):hover::after {
   width: 100%;
 }
 
+
 /* ── Request a Quote / Contact Us ──────────────────────────────────── */
 
 .quoteButton {
-  padding: clamp(6px, 1vw, 12px) clamp(16px, 2.5vw, 36px);
+  padding: 12px 36px;
+
   border: 1px solid #050505;
   border-radius: 0px;
+
   color: #FFFFFF !important;
   background: #050505;
   font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: clamp(10px, 1vw, 12px) !important;
+  font-size: 12px !important;
   font-weight: 500;
   letter-spacing: 0.5px;
-  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .quoteButton:hover {
@@ -219,34 +264,33 @@
 }
 
 /* =========================================
+   TEXT ANIMATION (PRECISION DRIVEN)
+   ========================================= */
+
+/* =========================================
    HERO CONTROLS (SOCIALS + CTA)
    ========================================= */
 
 .socialIcons {
   position: absolute;
-  right: 2%;
-  top: 35%;
-  z-index: 3;
+  top: 45%;
+  transform: translateY(-50%);
+  right: 3%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(10px, 1.5vw, 20px);
+  gap: 20px;
+  z-index: 25;
   pointer-events: auto;
-  opacity: 0;
-  padding: clamp(12px, 1.5vw, 24px) clamp(8px, 1vw, 16px);
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  transform: scale(clamp(0.45, 0.8vw, 0.9));
-  transform-origin: right center;
-}
+  /* Allow clicking */
 
-.socialIcons svg {
-  width: clamp(16px, 1.5vw, 24px);
-  height: clamp(16px, 1.5vw, 24px);
+  opacity: 0; /* Hidden before animation */
+  padding: 24px 16px;
+  background: rgba(224, 229, 233, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .animateSocialBox {
@@ -256,11 +300,11 @@
 @keyframes slideSocialBox {
   0% {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateY(-50%) translateX(50px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(-50%) translateX(0);
   }
 }
 
@@ -284,30 +328,27 @@
 
 .ctaWrapper {
   position: absolute;
-  bottom: 18%;
+  bottom: 8%;
   left: 8%;
-  z-index: 10;
+  z-index: 25;
   pointer-events: auto;
+  /* Allow clicking */
 }
 
 .heroCta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 10px 20px;
   background: #007FFF;
   color: #fff;
   border-radius: 0px;
   font-family: var(--font-inter, "Inter", sans-serif);
+  font-size: 12px;
   font-weight: 500;
   letter-spacing: 1px;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* Dynamic sizing as requested */
-  font-size: clamp(0.55rem, 1.1vw, 0.95rem);
-  padding: clamp(4px, 0.8vw, 10px) clamp(8px, 1.5vw, 20px);
-  max-width: 35vw;
-  white-space: nowrap;
 }
 
 .heroCta:hover {
@@ -316,10 +357,6 @@
   box-shadow: 0 8px 24px rgba(0, 127, 255, 0.3);
 }
 
-/* =========================================
-   TEXT ANIMATION (PRECISION DRIVEN)
-   ========================================= */
-
 .textContainer {
   position: absolute;
   top: 0;
@@ -327,31 +364,38 @@
   width: 100%;
   height: 100%;
   z-index: 5;
+  /* Layered in front of the equipment */
   pointer-events: none;
 }
 
 .textWrapperTop {
   position: absolute;
-  top: 18%;
-  left: 4%;
-  width: 42%;
-  z-index: 2;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 4%;
   overflow: hidden;
+  /* Enables the mask-reveal effect */
 }
 
 .textWrapperBottom {
   position: absolute;
-  bottom: 8%;
-  right: 4%;
-  width: 45%;
-  z-index: 2;
+  bottom: 1%;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5%;
   overflow: hidden;
 }
 
 .heroImageTop,
 .heroImageBottom {
-  width: 100%;
-  height: auto;
+  width: auto;
+  max-width: 90vw;
+  height: clamp(70px, 16vw, 250px);
   object-fit: contain;
   opacity: 0;
   will-change: transform, opacity;
@@ -374,13 +418,25 @@
 }
 
 @keyframes slideFromLeft {
-  0% { opacity: 0; transform: translateX(-120%); }
-  100% { opacity: 1; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX(-120%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideFromRight {
-  0% { opacity: 0; transform: translateX(120%); }
-  100% { opacity: 1; transform: translateX(0); }
+  0% {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* =========================================
@@ -401,16 +457,16 @@
   overflow: hidden;
 }
 
+
 .equipmentImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transform: scale(1);
+  transform: translateY(120%) scale(1);
   opacity: 1;
   will-change: transform;
 }
-
 .animateIn {
   animation:
     smoothZoom 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards,
@@ -418,26 +474,50 @@
 }
 
 @keyframes smoothZoom {
-  0% { transform: translateY(10%) scale(1); opacity: 0; }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
+  0% {
+    transform: translateY(120%) scale(1);
+  }
+
+  55% {
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes subtleFloat {
-  0% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-1%) scale(1); }
-  100% { transform: translateY(0) scale(1); }
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-5px) scale(1);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
-/* ── Responsive: Mobile Adjustments (Navbar only, hero stays 16:9) ── */
+/* ── Responsive: Tablet (769px – 1024px) — matches desktop hero ── */
+@media (max-width: 1024px) {
+  /* Hero section intentionally unchanged — desktop layout is retained on tablet */
+}
+
+/* ── Responsive: Mobile (< 768px) ── */
 @media (max-width: 768px) {
+
   /* --- Navbar --- */
   .navbar {
-    top: 10px;
+    top: 15px;
     transform: translate(-50%, 0);
   }
 
-  .navLinks {
-    display: none;
+  .navLinks,
+  .quoteButton {
+    display: none !important;
   }
 
   .navLeft {
@@ -445,20 +525,142 @@
   }
 
   .logo {
-    width: clamp(70px, 15vw, 150px);
-    height: auto;
-    transform: translateX(0);
+    width: 90px;
+    height: 60px;
+    transform: translateX(-5px);
   }
 
-  .quoteButton {
-    display: none;
-  }
-
-  .mobileMenuBtn {
-    display: flex;
-  }
-
+  .mobileMenuBtn,
   .mobileMenu {
     display: flex;
+  }
+
+  /* --- Hero Container --- */
+  .hero {
+    min-height: 100svh;
+    height: 100svh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* --- Background Image (Full Edge-to-Edge) --- */
+  .equipmentContainer {
+    position: absolute;
+    inset: 0;
+    width: 100vw !important;
+    height: 100% !important;
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+  }
+
+  .equipmentImage {
+    width: 100vw !important;
+    max-width: none !important;
+    height: 100% !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: bottom center !important;
+  }
+
+  /* --- Layered Content Overlay (Stacked Column) --- */
+  .textContainer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 10 !important;
+    pointer-events: none;
+    padding-top: 25vh;
+    gap: 16px;
+  }
+
+  /* 1. PRECISION (Top) */
+  .textWrapperTop {
+    order:1;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  .heroImageTop {
+    height: clamp(65px, 20vw, 100px) !important;
+    width: auto !important;
+  }
+
+  /* 2. IN ACTION (Middle) */
+  .textWrapperBottom {
+    order: 2;
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  .heroImageBottom {
+    height: clamp(60px, 18vw, 90px) !important;
+    width: auto !important;
+  }
+
+  /* 3. CTA Button (Centered) */
+  .ctaWrapper {
+    order:3;
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 200px !important;
+    transform: none !important;
+    z-index: 25 !important;
+    pointer-events: auto !important;
+  }
+
+  .heroCta {
+    padding: 7px 18px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  /* 4. Social Icons (Right Edge) */
+  .socialIcons {
+    position: absolute !important;
+    top: 50% !important;
+    right: 3% !important;
+    transform: translateY(-50%) !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    z-index: 25 !important;
+    padding: 16px 10px !important;
+  }
+
+  .socialIcons svg {
+    width: 18px !important;
+    height: 18px !important;
   }
 }

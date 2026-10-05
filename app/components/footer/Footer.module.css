@@ -1,193 +1,216 @@
+/* ─────────────────────────────────────────────
+   PEMS FOOTER — matches ABS reference layout
+───────────────────────────────────────────── */
+
 .footer {
-  background: #050505;
-  position: relative;
+  background-color: #0A1128;
+  font-family: 'Inter', 'Roboto', 'Helvetica Neue', system-ui, sans-serif;
+  color: #ffffff;
+}
+
+.inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 6% 0;
+}
+
+/* ── Top header row ── */
+.topHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.topTitle {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ── Contact card ── */
+.contactCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  margin-bottom: 52px;
   overflow: hidden;
 }
 
-/* ── Top section ── */
-.top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 64px;
-  padding: 80px 6% 60px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+.contactCol {
+  padding: 28px 32px;
+  text-align: center;
 }
 
-/* ── Brand col ── */
-.brandCol {}
-
-.logoLink {
-  display: inline-block;
-  margin-bottom: 24px;
+.contactColBorder {
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.logo {
-  width: 130px;
-  height: auto;
-  object-fit: contain;
-  filter: brightness(1.1);
-}
-
-.brandDesc {
-  font-family: var(--font-manrope, "Manrope", sans-serif);
-  font-size: 13px;
-  color: rgba(240, 244, 248, 0.5);
-  line-height: 1.8;
-  margin-bottom: 28px;
-  max-width: 320px;
-}
-
-.vision {
-  border-left: 2px solid #007FFF;
-  padding-left: 16px;
-}
-
-.visionLabel {
+.contactLabel {
   display: block;
-  font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  color: #007FFF;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #F59E0B;
+  text-transform: capitalize;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
 }
 
-.visionText {
-  font-family: var(--font-manrope, "Manrope", sans-serif);
-  font-size: 12.5px;
-  color: rgba(240, 244, 248, 0.45);
+.contactText {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.75;
 }
 
-/* ── Link cols ── */
-.linksCol,
-.contactCol {
-  padding-top: 4px;
+.contactText a {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.2s ease;
 }
 
-.colTitle {
-  font-family: var(--font-space-grotesk, "Space Grotesk", sans-serif);
-  font-size: 12px;
+.contactText a:hover {
+  color: #F59E0B;
+}
+
+/* ── Bottom 3-col grid ── */
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 52px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Link columns ── */
+.linkCol {}
+
+.colHeading {
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #f0f4f8;
-  margin-bottom: 24px;
+  color: #F59E0B;
+  margin-bottom: 20px;
+  letter-spacing: 0.2px;
 }
 
 .linkList {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .linkList li a {
-  font-family: var(--font-manrope, "Manrope", sans-serif);
-  font-size: 13.5px;
-  color: rgba(240, 244, 248, 0.5);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
   transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
 .linkList li a:hover {
-  color: #007FFF;
+  color: #ffffff;
   padding-left: 4px;
 }
 
-/* ── Contact col ── */
-.contactList {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+/* ── Action column (location + brochure) ── */
+.actionCol {}
 
-.contactList li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-family: var(--font-manrope, "Manrope", sans-serif);
-  font-size: 13px;
-  color: rgba(240, 244, 248, 0.5);
-  line-height: 1.5;
-}
-
-.contactList li a {
-  color: rgba(240, 244, 248, 0.5);
-  transition: color 0.2s ease;
-}
-
-.contactList li a:hover {
-  color: #007FFF;
-}
-
-.contactIcon {
-  font-size: 14px;
-  color: #007FFF;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-/* ── Map section ── */
-.mapSection {
-  padding: 0 6% 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.mapHeader {
-  display: flex;
+/* Location selector */
+.locationSelector {
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 20px;
-  padding: 32px 0 20px;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  min-width: 160px;
 }
 
-.mapLabel {
-  font-family: var(--font-inter, "Inter", sans-serif);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  color: #007FFF;
-  text-transform: uppercase;
+.locationFlag {
+  font-size: 18px;
+  line-height: 1;
   flex-shrink: 0;
 }
 
-.mapNote {
-  font-family: var(--font-manrope, "Manrope", sans-serif);
-  font-size: 12px;
-  color: rgba(240, 244, 248, 0.3);
-  font-style: italic;
+.locationSelect {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  flex: 1;
+  padding-right: 4px;
 }
 
-.mapEmbed {
+.locationSelect option {
+  background: #0A1128;
+  color: #ffffff;
+}
+
+.selectArrow {
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* Download button */
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: #ffffff;
   border-radius: 8px;
   overflow: hidden;
-  opacity: 0.75;
-  transition: opacity 0.3s ease;
-  margin-bottom: 0;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.mapEmbed:hover {
-  opacity: 1;
+.downloadBtn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
 }
 
-.mapEmbed iframe {
-  display: block;
-  filter: grayscale(0.8) invert(0.9) hue-rotate(180deg);
+.downloadIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F59E0B;
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.downloadLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0A1128;
+  padding: 0 20px;
 }
 
 /* ── Bottom bar ── */
-.bottom {
+.bottomBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 6%;
+  padding: 22px 0 28px;
   flex-wrap: wrap;
   gap: 12px;
 }
 
 .copy {
-  font-family: var(--font-manrope, "Manrope", sans-serif);
   font-size: 12.5px;
-  color: rgba(240, 244, 248, 0.35);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .legal {
@@ -197,76 +220,66 @@
 }
 
 .legal a {
-  font-family: var(--font-manrope, "Manrope", sans-serif);
   font-size: 12.5px;
-  color: rgba(240, 244, 248, 0.35);
+  color: rgba(255, 255, 255, 0.3);
   transition: color 0.2s ease;
 }
 
 .legal a:hover {
-  color: #007FFF;
+  color: #F59E0B;
 }
 
-.legalDot {
+.dot {
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background: rgba(240, 244, 248, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* ── Responsive ── */
-@media (max-width: 1100px) {
-  .top {
+@media (max-width: 1024px) {
+  .bottomGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 36px;
   }
-
-  .brandCol {
+  .actionCol {
     grid-column: 1 / -1;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
   }
 }
 
-@media (max-width: 640px) {
-  .top {
+@media (max-width: 768px) {
+  .contactCard {
     grid-template-columns: 1fr;
-    gap: 36px;
-    padding: 60px 5% 48px;
   }
-
-  .brandCol {
-    grid-column: unset;
+  .contactColBorder {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
   }
-
-  .mapSection {
-    padding: 0 5%;
+  .bottomGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
-
-  .bottom {
+  .actionCol {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .topHeader {
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px 5%;
+    gap: 20px;
   }
 }
 
-@media (max-width: 380px) {
-  .top {
-    padding: 48px 4% 36px;
-    gap: 28px;
+@media (max-width: 480px) {
+  .inner {
+    padding: 48px 5% 0;
   }
-
-  .mapSection {
-    padding: 0 4%;
-  }
-
-  .bottom {
-    padding: 16px 4%;
-  }
-
-  .copy {
-    font-size: 11px;
-  }
-
-  .mapEmbed iframe {
-    height: 220px;
+  .bottomBar {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

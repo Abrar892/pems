@@ -1,119 +1,75 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./About.module.css";
-
-const stats = [
-  { target: 15, suffix: "+", label: "YEARS OF ENGINEERING EXPERIENCE" },
-  { target: 200, suffix: "+", label: "PROJECTS SUCCESSFULLY DELIVERED" },
-  { target: 50, suffix: "+", label: "INDUSTRIAL CLIENTS SERVED" },
-  { target: 98, suffix: "%", label: "CLIENT SATISFACTION" },
-];
-
-function StatCounter({ target, suffix, delay, visible }: { target: number, suffix: string, delay: number, visible: boolean }) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!visible) return;
-
-    let start: number;
-    let animationFrame: number;
-    const duration = 2000;
-
-    const animate = (timestamp: number) => {
-      if (!start) start = timestamp;
-      const elapsed = timestamp - start;
-      const progress = Math.min(Math.max((elapsed - delay) / duration, 0), 1);
-
-      const ease = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(target * ease));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      } else {
-        setCount(target);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [visible, target, delay]);
-
-  return <>{count}{suffix}</>;
-}
-
-
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    
+    const targets = el.querySelectorAll<HTMLElement>("[data-animate]");
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.12 }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.animationPlayState = "running";
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    
+    targets.forEach((t) => observer.observe(t));
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef} className={`${styles.about} ${visible ? styles.visible : ""}`} id="about">
-
-      {/* Section label */}
-      <div className={styles.sectionTag}>
-        <span className={styles.tagLine} />
-        <span className={styles.tagText}>WHO WE ARE</span>
-      </div>
-
-      <div className={styles.grid}>
-
-        {/* Left — text */}
-        <div className={styles.leftCol}>
-          <h2 className={styles.heading}>
-            Engineering <span className={styles.accentText}>Reliability</span><br />
-            Into Every Operation.
-          </h2>
-
-          <p className={styles.body}>
-            Pakistan Engineering Maintenance Service (PEMS) delivers dependable mechanical maintenance, plant engineering, fabrication, and technical support for demanding industrial environments.
-          </p>
-          <p className={styles.body}>
-            From initial assessment to project completion, our experienced teams combine technical precision, disciplined execution, and practical engineering expertise to keep critical operations moving.
-          </p>
-
-          <div className={styles.statsRow}>
-            {stats.map((s, i) => (
-              <div key={s.label} className={styles.statCard}>
-                <span className={styles.statValue}>
-                  <StatCounter target={s.target} suffix={s.suffix} delay={i * 120} visible={visible} />
-                </span>
-                <span className={styles.statLabel}>{s.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Right — visual */}
-        <div className={styles.rightCol}>
-          <div className={styles.imageBlock}>
+    <section ref={sectionRef} className={styles.aboutSection} id="about">
+      <div className={styles.container}>
+        
+        {/* Left Column — Image */}
+        <div className={styles.imageCol}>
+          <div className={styles.imageWrap}>
             <Image
-              src="/massive-steel.avif"
-              alt="PEMS industrial engineering operations"
-              className={styles.mainImage}
+              src="/compnay outer.jpg"
+              alt="PEMS Facility"
               fill
-              sizes="(max-width: 600px) 90vw, (max-width: 1024px) 90vw, 47vw"
-              quality={78}
-              loading="lazy"
+              className={styles.image}
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className={styles.imageAccent} />
           </div>
         </div>
 
+        {/* Right Column — Content */}
+        <div className={styles.contentCol}>
+          <h2 className={styles.heading} data-animate style={{ animationDelay: "0s" }}>
+            Who We Are
+          </h2>
+          
+          <p className={styles.bodyText} data-animate style={{ animationDelay: "0.1s" }}>
+            Pakistan Engineering Maintenance Service (PEMS) is an industrial mechanical engineering, maintenance, and specialized engineering services company delivering comprehensive joint integrity solutions, precision machining, controlled bolting, and fabrication across Pakistan.
+          </p>
+          
+          <div data-animate style={{ animationDelay: "0.2s" }}>
+            <Link href="/about" className={styles.ctaButton}>
+              <span className={styles.iconCircle}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+              <span className={styles.btnText}>Read Our Story</span>
+            </Link>
+          </div>
+        </div>
+        
       </div>
-
-
     </section>
   );
 }

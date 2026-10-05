@@ -38,6 +38,8 @@ export const metadata: Metadata = {
   ],
 };
 
+import Navbar from "@/app/components/navbar/Navbar";
+
 export default function RootLayout({
   children,
 }: {
@@ -47,6 +49,7 @@ export default function RootLayout({
     <html lang="en" className={`${manrope.variable} ${spaceGrotesk.variable} ${inter.variable}`} suppressHydrationWarning>
       <body>
         <CurtainReveal />
+        <Navbar />
         {children}
       </body>
     </html>

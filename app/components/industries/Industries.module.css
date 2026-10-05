@@ -1,0 +1,132 @@
+.industriesSection {
+  background-color: #F8FAFC;
+  padding: 80px 0 100px;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.line {
+  height: 2px;
+  width: 60px;
+  background-color: #FF9900;
+}
+
+.title {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ── Carousel Track & Infinite Scroll ── */
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333333%); } /* Scrolls one full set out of the three duplicated sets */
+}
+
+.carouselContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Optional gradient fade at edges */
+.carouselContainer::before,
+.carouselContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 8%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.carouselContainer::before {
+  left: 0;
+  background: linear-gradient(to right, #F8FAFC, rgba(248, 250, 252, 0));
+}
+.carouselContainer::after {
+  right: 0;
+  background: linear-gradient(to left, #F8FAFC, rgba(248, 250, 252, 0));
+}
+
+.track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scrollLeft 35s linear infinite;
+  padding: 10px 0; /* Add top/bottom padding to avoid shadow clipping during hover */
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Individual Card ── */
+.card {
+  width: 300px; /* Fixed card width */
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(10, 17, 40, 0.1);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card:hover .image {
+  transform: scale(1.06);
+}
+
+.labelWrap {
+  padding: 20px 16px;
+  text-align: center;
+  background: #ffffff;
+  z-index: 1; /* Keeps label above the image zoom */
+}
+
+.label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0A1128;
+}
+
+/* Responsive constraints */
+@media (max-width: 768px) {
+  .card {
+    width: 260px;
+  }
+}
